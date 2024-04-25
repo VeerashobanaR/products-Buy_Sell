@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller:Vino</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="seller-info">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLdkzaMvgVz0h9ny8j7RGnl5bBVhQFeZtyjQ&usqp=CAU" alt="IPhone Image" width="200" height="200">
+
+        <h3>IPHONE</h3>
+        <p>Model: 2022</p>
+        <p>Condition: USED</p>
+        <p>Price: ₹1,45,000</p>
+        <p>Seller: Vino</p>
+
+        <button id="buyButton">Buy Now</button>
+    </div>
+
+    <div class="buyer-info" style="display: none;">
+        <h2>Buyer Information</h2>
+        <form id="buyerForm">
+            <label for="buyerName">Name:</label>
+            <input type="text" id="buyerName" required><br>
+
+            <label for="buyerEmail">Email:</label>
+            <input type="email" id="buyerEmail" required><br>
+
+            <button type="submit">Confirm Order</button>
+        </form>
+    </div>
+
+    <div class="order-confirmation" style="display: none;">
+        <h2>Order Confirmation</h2>
+        <p>Thank you for your order!</p>
+        <p>Product: iphone 2022</p>
+        <p>Price: ₹1,45,000</p>
+        <p>Seller: vino</p>
+        <p>Buyer: <span id="confirmedBuyerName"></span></p>
+        <p>Email: <span id="confirmedBuyerEmail"></span></p>
+    </div>
+
+    <script>
+        const buyButton = document.getElementById("buyButton");
+        const buyerInfo = document.querySelector(".buyer-info");
+        const buyerForm = document.getElementById("buyerForm");
+        const confirmationSection = document.querySelector(".order-confirmation");
+        const confirmedBuyerName = document.getElementById("confirmedBuyerName");
+        const confirmedBuyerEmail = document.getElementById("confirmedBuyerEmail");
+
+        buyButton.addEventListener("click", () => {
+            buyerInfo.style.display = "block";
+        });
+
+        buyerForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const buyerName = document.getElementById("buyerName").value;
+            const buyerEmail = document.getElementById("buyerEmail").value;
+
+            confirmedBuyerName.textContent = buyerName;
+            confirmedBuyerEmail.textContent = buyerEmail;
+            confirmationSection.style.display = "block";
+            buyerInfo.style.display = "none";
+        });
+    </script>
+</body>
+<style>
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Make the body fill the viewport height */
+}
+
+.seller-info {
+    max-width: 400px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+/* Add your existing CSS styles here */
+</style>
+</html>
